@@ -14,7 +14,8 @@ const {
 	assertValidLine,
 	assertValidPassed,
 	hour, when,
-	assertValidWhen
+	assertValidWhen,
+	assertValidTicket
 } = require('./util')
 
 const hafas = require('..')
@@ -31,7 +32,7 @@ const findStation = (query) => stations(query, true, false)
 test('journeys – station to station', (t) => {
 	// U Spichernstr. to U Amrumer Str.
 	hafas.journeys('900000042101', '900000009101', {
-		results: 3, when, passedStations: true
+		results: 3, when, passedStations: true, tickets: true
 	})
 	.then((journeys) => {
 		t.ok(Array.isArray(journeys))
@@ -68,6 +69,9 @@ test('journeys – station to station', (t) => {
 
 			t.ok(Array.isArray(part.passed))
 			for (let passed of part.passed) assertValidPassed(t, passed)
+
+			t.ok(Array.isArray(journey.tickets))
+			for (let ti of journey.tickets) assertValidTicket(t, ti)
 		}
 	})
 	.catch(t.ifError)
