@@ -29,7 +29,7 @@
 		"node": ">=8"
 	},
 	"dependencies": {
-		"hafas-client": "^4.0.1",
+		"hafas-client": "^4.8.0",
 		"merged-vbb-stations": "^1.6.0",
 		"vbb-change-positions": "^1.1.0",
 		"vbb-line-colors": "^1.0.2"
